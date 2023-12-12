@@ -15,7 +15,7 @@ extern char **environ;
 char *_readline(void);
 char **_splitline(char *line);
 int run_command(char **args);
-char **parse_path(char *command)
+char **parse_path(char *command);
 char *_strcat(char *dest, char *src);
 char **tokenize_env(char *path);
 int _strcmp(char *s1, char *s2);
