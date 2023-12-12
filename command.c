@@ -8,39 +8,37 @@
 
 int run_command(char **args)
 {
-        pid_t my_pid;
-        char *command = args[0];
-        int status;
+	pid_t my_pid;
+	char *command = args[0];
+	int status;
 
+	my_pid = fork();
+	if (my_pid == -1)
+	{
+		perror("hsh");
+	}
 
+	if (my_pid == 0)
+	{
+		if (command[0] == '/' || command[0] == '.')
+			command = args[0];
+		else
+			command = parse_path(command);
 
-        my_pid = fork();
-        if (my_pid == -1)
-        {
-                perror("hsh");
-        }
+		if (!command)
+		{
+			perror("hsh");
+			return (0);
+		}
 
-        if (my_pid == 0)
-        {
-                if (command[0] == '/' || command[0] == '.')
-                        command = args[0];
-                else
-                        command = parse_path(command);
-
-                if (!command)
-                {
-                        perror("hsh");
-                        return (0);
-                }
-
-                if (execve(command, args, NULL) == -1)
-                {
-                        perror("hsh");
-                }
-        }
-        else
-        {
-                wait(&status);
-        }
-        return (1);
+		if (execve(command, args, NULL) == -1)
+		{
+			perror("hsh");
+		}
+	}
+	else
+	{
+		wait(&status);
+	}
+	return (1);
 }
