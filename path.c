@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
-  * parse_path - Gets the full path of a command given
-  * @command: The command to find the full path for
-  *
-  * Return: The full path if successful
-  */
+ * parse_path - Gets the full path of a command given
+ * @command: The command to find the full path for
+ *
+ * Return: The full path if succesful
+ */
 
 char *parse_path(char *command)
 {
@@ -27,7 +27,6 @@ char *parse_path(char *command)
 		_strcat(fullpath, cmd);
 		if (stat(fullpath, &st) == 0)
 			return (fullpath);
-
 	}
 	free(fullpath);
 	return (NULL);

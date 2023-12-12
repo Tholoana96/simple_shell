@@ -41,23 +41,15 @@ return (dest);
 */
 int _strcmp(char *s1, char *s2)
 {
-int i = 0, ret;
-bool s1_null = s1[i] == NULL;
-bool s2_null = s2[i] == NULL;
+int i = 0, j;
 
-while (s1_null || s2_null)
+for (i = 0; s1[i] && s2[i]; i++)
 {
-if (s1_null)
+if (s1[i] == s2[i])
+continue;
+else
 break;
-else
-{
-if (s1[i] < s2[i])
-ret = -1;
-else
-ret = 1;
 }
-i++;
+j = s1[i] - s2[i];
+return (j);
 }
-return (ret);
-}
-
