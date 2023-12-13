@@ -1,33 +1,22 @@
 #include "shell.h"
 
 /**
- * parse_path - Gets the full path of a command given
- * @command: The command to find the full path for
+ * parse_path - Parse the PATH variable and return an array of directories.
  *
- * Return: The full path if succesful
+ * Return: An array of directories.
  */
-
-char *parse_path(char *command)
+char **parse_path(char *path)
 {
-	struct stat st;
-	int i;
-	char *path = shell_environ("PATH");
-	char **dirs = tokenizer(path);
-	char *cmd = command;
-	char *fullpath = malloc(sizeof(char) * 1024);
+	char **dirs = NULL;
+	char *tokens[PATH_MAX];
+	size_t i = 0;
 
-	if (fullpath == NULL)
-		return (NULL);
-
-	for (i = 0; dirs[i]; i++)
-	{
-		fullpath[0] = 0;
-		_strcat(fullpath, dirs[i]);
-		_strcat(fullpath, "/");
-		_strcat(fullpath, cmd);
-		if (stat(fullpath, &st) == 0)
-			return (fullpath);
-	}
-	free(fullpath);
-	return (NULL);
+	if (path == NULL || strlen(path) == 0)
+			
+			dirs = malloc(sizeof(char *) * n);
+				if (dirs == NULL)
+				return NULL
+			}
+			{                    
+			return dirs;
 }
