@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <string.h>
 #include <errno.h>
 #include <signal.h>
@@ -15,7 +16,8 @@ extern char **environ;
 char *_readline(void);
 char **_splitline(char *line);
 int run_command(char **args);
-char *parse_path(char *command);
+char *command_path(const char *command, char **directories);
+char *find_executable(const char *command);
 char *_strcat(char *dest, char *src);
 char **tokenizer(char *path);
 int _strcmp(char *s1, char *s2);
