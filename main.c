@@ -20,7 +20,7 @@ if (!line)
 {
 return (0);
 }
-if (_strcmp(line, "exit") == 0)
+if (_strncmp(line, "exit", 4) == 0)
 {
 free(line);
 return (0);
